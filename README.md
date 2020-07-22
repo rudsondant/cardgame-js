@@ -46,10 +46,10 @@ addCardSpace("UP","0",2); //adiciona no espaço UP da mesa 2 regiões para coloc
 ```
 ### function setColor(id, red, green, blue)
 Muda a cor de uma região da sua tela, usando o padrão RGB
-*id - o id da região cuja cor será mudada. O bibliteca já tem os seguinetes ids: "UP", "DOWN","MID","TABLE"
-*red - tom de vermelho da cor
-*green - tom de verde
-*blue - tom de azul
+* id - o id da região cuja cor será mudada. O bibliteca já tem os seguinetes ids: "UP", "DOWN","MID","TABLE"
+* red - tom de vermelho da cor
+* green - tom de verde
+* blue - tom de azul
 ```
 function setup(){
 
