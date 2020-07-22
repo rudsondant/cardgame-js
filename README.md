@@ -19,7 +19,7 @@ function draw(){
    //lógica do jogo
 }
 ```
-## Funções para criar a tela de jogo (fxecutar em setup)
+## Funções para criar a tela de jogo (executar em setup)
 Para permitir que você manipule a tela do jogo sem precisar mexer no HTML foram criadas ulgumas funçãos que alteram o HTML e o CSS básico do código, permitindo que você faça tudo apenas com Javascript.
 ### function createTable()
 Cria uma mesa para o jogo, através da criação de um região que ocupa todo o centro da tela. Ele vai ocupar 80% da tela. Nessa mesa você podera colocar as cartas do seu jogo quando ele estiver executando. A mesa começa já com 3 regiões internas: "UP", "MID" e "DOWN". Elas separam as meses em 3 espaços que servem para delimitir o espaço para dos jogadores ("UP" e "DOWN") e espaço claro entre eles ("MID"). Os espaços ("UP" e "DOWN") não tem um tamanho definido, o que vai depender das cartas quando adcionadas. O espaço "MID" começa com largura e altura definidos.
@@ -44,7 +44,7 @@ addCardSpace("UP","0",2); //adiciona no espaço UP da mesa 2 regiões para coloc
 
 }
 ```
-### function function setColor(id, red, green, blue)
+### function setColor(id, red, green, blue)
 Muda a cor de uma região da sua tela, usando o padrão RGB
 *id - o id da região cuja cor será mudada. O bibliteca já tem os seguinetes ids: "UP", "DOWN","MID","TABLE"
 *red - tom de vermelho da cor
