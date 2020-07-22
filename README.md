@@ -32,7 +32,7 @@ createTable();
 ```
 ### function addCardSpace(position, label, amount)
 Adiciona um espaço para carta na Mesa. 
-* position - posição na mesa se acima ("UP") ou abaixo ("DOWN") do botãoptimize
+* position - posição na mesa se acima ("UP") ou abaixo ("DOWN") do botão
 * label - um texto para ser adcionado a celulas
 * amount - a quantidade de espaços adicionados de um só vez
 ```
@@ -40,6 +40,21 @@ function setup(){
 
 createTable();
 addCardSpace("UP","0",2); //adiciona no espaço UP da mesa 2 regiões para colocar cartas
+
+
+}
+```
+### function function setColor(id, red, green, blue)
+Muda a cor de uma região da sua tela, usando o padrão RGB
+*id - o id da região cuja cor será mudada. O bibliteca já tem os seguinetes ids: "UP", "DOWN","MID","TABLE"
+*red - tom de vermelho da cor
+*green - tom de verde
+*blue - tom de azul
+```
+function setup(){
+
+createTable();
+setColor("MID",0,0,255);; //muda a cor do MID para AZUL.
 
 
 }
