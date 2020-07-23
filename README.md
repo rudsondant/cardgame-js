@@ -164,12 +164,13 @@ Muda a altura de uma barra
  }
 ```
 
-### function setScoreValue(id)
+### function setScoreValue(id,num)
 Adiciona uma região para exibir o score do jogador
 * id - id da região onde vai ser adcionado o score
+* num - numero do jogador, para poder diferenciar de quem é esse score
 ```
 function setup(){
-  setScoreValue("UP");
+  setScoreValue("UP",1);
 }
 ```
 
@@ -201,12 +202,75 @@ var finalDeck = deckMix(deck2,deck3);
 
 ### function nextCard(deck)
 
+Saca a próxima carta do baralho
+* deck - um vetor já com as cartas do baralho.
+ ```
+ function draw(){
+	var card = nextCard(finalDeck);
+}
+```
+
 ### function paint(index, card)
+Desenha uma carta do baralho na tela do jogo.
+ 
+ * index - posição onde a carta será desenhada na mesa. A posição 0 representa o lugar onde a primeira carta foi adicionada com addCardSpace, e as demais seguem a sequencia
+ que foram adicionadas
+ * card - o nome de uma carta do jogo, já com .png
+ 
+ ```
+ function draw(){
+	var card = nextCard(finalDeck);
+	paint(0, card);
+}
+```
 
 ### getSuit(card)
+Retorna o naipe da carta. A entrada é uma carta. A saida é uma string com o nome do naipe.
+* card - uma carta para poder retornar o seu naipe
+* saída - "Clubs - Paus", "Diamonds - Ouro", "Hearts - Copas", "Spades - Espada".
+```
+function draw(){
+	var card = nextCard(finalDeck);
+	var x = getSuit(c);
+}
+```
 
 ### function getNumber(card)
-
-### function addScore(player, score)
+Retorna o número da carta.
+ * card - uma carta para retorna o número
+ * saída - string com o número da carta.
+ ```
+function draw(){
+	var card = nextCard(finalDeck);
+	var y = getNumber(c);
+}
+```
 
 ### function getCard(pos)
+Retorna a carta de uma posição da mesa. A posição é difinida quando você adiciona uma carta na tela
+* pos - posição da carta na mesa
+* saída - carta que está na posição pesquisada
+
+```
+function draw(){
+	var card1 = nextCard(finalDeck);
+	paint(1, card1);
+	var c = getCard(1);
+}
+```
+
+### function addScore(player, score)
+Adiciona pontos ao jogador.
+ * player - numero do jogador. Os números dos jogadores são criados automáticamente quando você usa a função setScoreValue para criar um score na tela
+ * score - potuação do jogador
+```
+function draw(){
+	var card1 = nextCard(finalDeck);
+	paint(1, card1);
+	var c = getCard(1);
+	var x = getSuit(c);
+	addScore(1,getNumber(c));
+}
+```
+
+
