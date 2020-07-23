@@ -137,4 +137,76 @@ function setup(){
     addButton("MID","vai", "draw()");  //adciona um botão com o texto vai a região MID, e com capacidade de chamar a função draw
 }
 ``` 
-   
+### function setCardBack(color, type)
+Altera a imagem do verso das cartas
+* color - a cor do verso da carta que pode ser "RED", "GREEN" ou "BLUE"
+* type - o tipo do desenho no fundo, que pode ser um número de 1 a 5
+```
+function setup(){
+
+createTable();
+addCardSpace("UP","0",2); //adiciona no espaço UP da mesa 2 regiões para colocar cartas
+setCardBack("RED",2);
+
+}
+```
+
+### function barSetHeight(id, h)
+Muda a altura de uma barra
+* id - o id do objeto que será alterado
+* h - nova altura do objeto
+```
+ function setup(){
+    addBar("vit");
+    setColor("vit",0,255,0);
+    setText("vit","Jogar")
+    barSetHeight("vit", 30); //altera a altura da barra para 30px
+ }
+```
+
+### function setScoreValue(id)
+Adiciona uma região para exibir o score do jogador
+* id - id da região onde vai ser adcionado o score
+```
+function setup(){
+  setScoreValue("UP");
+}
+```
+
+## Funções para criar a lógica de jogo (executar no draw ou antes das funções)
+Para criar o seu jogo temos algumas funções que permitem que você manipule um baralho, embaralhando e sacando cartas.
+
+### function shufle()
+Embaralha as 52 cartas do jogo, não permitindo cartas repetidas. Não inclui os coringas. As cartas são armazenadas em um vetor chamado deck. O vetor é retornado
+como saída desta função. Você pode executar tanto no draw, como antes das funções. Quando executado o baralho com 52 cartas é criado.
+
+```
+var deck2 = shufle(); // executado antes mesmo das funções
+```
+
+```
+function draw(){
+   var deck2 = shufle(); //executado no draw
+
+}
+```
+
+### function deckMix()
+Recebe um conjnto de baralhos e mistura os baralhos para criar um deck *unico com todos so baralhos. Use com sabedoria!
+```
+var deck2 = shufle();
+var deck3 = shufle();
+var finalDeck = deckMix(deck2,deck3);
+```
+
+### function nextCard(deck)
+
+### function paint(index, card)
+
+### getSuit(card)
+
+### function getNumber(card)
+
+### function addScore(player, score)
+
+### function getCard(pos)
