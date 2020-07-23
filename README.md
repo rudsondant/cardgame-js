@@ -44,6 +44,33 @@ addCardSpace("UP","0",2); //adiciona no espaço UP da mesa 2 regiões para coloc
 
 }
 ```
+
+### function addBar(id)
+Adiciona uma região em forma de barra vertical a tela. A região começa com uma altura definida mas que pode ser alterada por outra função (barSetHeight()).
+A barra é desenhada de acordo com a ordem que você adicionou ela, sendo que a primeira que você adiciona vai ficar no canto superior da tela, e as demais virão
+em seguida, abaixo. Se você adicionar uma barra antes de criar a mesa ela fica acima da mesa.
+* id - o id do objeto que será alterado
+```
+function setup(){
+   addBar("upbar"); // cria uma barra com o nome upbar
+}
+```
+
+```
+function setup(){
+   addBar("upbar"); // cria uma barra com o nome upbar e uma mesa logo abaixo da barra
+   createTable();
+}
+```
+```
+function setup(){
+   addBar("upbar"); // cria uma barra com o nome upbar e uma mesa logo abaixo da barra, e depois outra barra abaixo da mesa
+   createTable();
+   addBar("vir"); 
+}
+```
+
+
 ### function setColor(id, red, green, blue)
 Muda a cor de uma região da sua tela, usando o padrão RGB
 * id - o id da região cuja cor será mudada. O bibliteca já tem os seguinetes ids: "UP", "DOWN","MID","TABLE"
@@ -59,3 +86,11 @@ setColor("MID",0,0,255);; //muda a cor do MID para AZUL.
 
 }
 ```
+
+### function setText(id1, text)
+Adiciona um texto a uma regiãa da sua tela
+* id - o id da região cuj texto será adicionado. O bibliteca já tem os seguinetes ids: "UP", "DOWN", "MID","TABLE".
+* text - o texto que você quer adicionar
+```
+
+
