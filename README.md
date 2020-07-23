@@ -92,5 +92,49 @@ Adiciona um texto a uma regiãa da sua tela
 * id - o id da região cuj texto será adicionado. O bibliteca já tem os seguinetes ids: "UP", "DOWN", "MID","TABLE".
 * text - o texto que você quer adicionar
 ```
+function setup(){
+    addBar("vit"); // cria uma barra com id vit, muda sua cor para verde e adiciona um texto nela
+    setColor("vit",0,255,0);
+    setText("vit","Jogar")
+}
+```
+### textDecoration(oldId, effect)
+Altera o estilo do texto, para Negrito, Italico ou Normal.  É possivel aplicar separadamente os efeitos "ITALIC" e "BOLD".
+* id - o id da região que vai ser alterada
+* effect - o efeito que se quer aplicar, que pode ser "NORMAL", "ITALIC" e "BOLD" (negrito)
+```
+function setup(){
+    setText("UP","Jogar")  //adicina um texto chamadao Jogar a região UP e depois deixa ele negrito
+    textDecoration("UP","BOLD");    
+}
+```
 
+### function textSize(id,size)
+Altera o tamanho da fonte de um texto
+* id - o id da região que vai ser alterada
+* size - o tamanho novo da fonte
+```
+function setup(){
+    setText("UP","Jogar")  //adicina um texto chamadao Jogar a região UP e altera seu tamanho pra 16 px
+    textSize("UP",16);    
+}
+```
 
+### function addButton(id,text,action)
+Adiciona um botão a tela, no local especificado pelo id. O botão pode ter sua propria função
+	* id - o id do obejto onde o botão vai ser adicionado
+	* text - o texto do botão
+	* action - uma função que será chamada quando o botão for apertado. É opcional e pode ser vazio
+```
+function setup(){
+    
+    addButton("MID","jogar");  //adciona um botão com o texto jogar a região MID
+}
+```   
+```
+function setup(){
+    
+    addButton("MID","vai", "draw()");  //adciona um botão com o texto vai a região MID, e com capacidade de chamar a função draw
+}
+``` 
+   
