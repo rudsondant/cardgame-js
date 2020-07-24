@@ -21,12 +21,20 @@ function draw(){
 ```
 ## Funções para criar a tela de jogo (executar em setup)
 Para permitir que você manipule a tela do jogo sem precisar mexer no HTML foram criadas ulgumas funçãos que alteram o HTML e o CSS básico do código, permitindo que você faça tudo apenas com Javascript.
-### function createTable()
-Cria uma mesa para o jogo, através da criação de um região que ocupa todo o centro da tela. Ele vai ocupar 80% da tela. Nessa mesa você podera colocar as cartas do seu jogo quando ele estiver executando. A mesa começa já com 3 regiões internas: "UP", "MID" e "DOWN". Elas separam as meses em 3 espaços que servem para delimitir o espaço para dos jogadores ("UP" e "DOWN") e espaço claro entre eles ("MID"). Os espaços ("UP" e "DOWN") não tem um tamanho definido, o que vai depender das cartas quando adcionadas. O espaço "MID" começa com largura e altura definidos.
+### function createTable(type)
+Cria uma mesa para o jogo, através da criação de um região que ocupa todo o centro da tela. Ele vai ocupar 80% da tela. Nessa mesa você podera colocar as cartas do seu jogo quando ele estiver executando. A mesa começa já com 3 regiões internas: "up", "MID" e "down", que não são as  mesmas regiões "UP" e "DOWN" das barras. Elas separam as meses em 3 espaços que servem para delimitir o espaço para dos jogadores ("up" e "down") e espaço claro entre eles ("MID"). Os espaços ("up" e "down") não tem um tamanho definido, o que vai depender das cartas quando adcionadas. O espaço "MID" começa com largura e altura definidos.
+* type - define o tipo da mesa que pode ser 0, para uma mesa com 2 linhas de cartas e uma região no meio chamada "MID" come desccrito acima   ou 1 para uma mesa com 3 linhas de cartas, com a terceira linha sendo uma região chamada "MIDDLE".
 ```
 function setup(){
 
-createTable();
+createTable(0);
+
+}
+```
+```
+function setup(){
+
+createTable(1);
 
 }
 ```
@@ -172,6 +180,19 @@ Adiciona uma região para exibir o score do jogador
 function setup(){
   setScoreValue("UP",1);
 }
+```
+
+### function setWidth(id, w)
+Altera a largura de uma regiao da tela
+* id - o id do objeto que será alterado
+* w - nova largura do objeto. Devem ser valores entre 0 e 100.
+```
+function setup(){
+	addBar("vit");
+    	setColor("vit",0,255,0);
+    	setText("vit","Jogar")
+    	setWidth("vit", 100);
+    }
 ```
 
 ## Funções para criar a lógica de jogo (executar no draw ou antes das funções)
