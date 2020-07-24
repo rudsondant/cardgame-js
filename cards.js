@@ -12,6 +12,7 @@
 	var log = " ";
   var count = 0;
 	var cardBack;
+	var cardSize;
 
 /**
 * Saca a próxima carta do baralho
@@ -34,7 +35,7 @@ function nextCard(deck){
 function paint(index, card){
 
 	try {
-		celulas[index].innerHTML= "<div style='clear: both;'class='img'> <img src='images/"+card+"'></div>";
+		celulas[index].innerHTML= "<div style='clear: both; 'class='img'> <img src='images/"+card+"'></div>";
 		table[index] = card.substring(4,card.lastIndexOf("."));
 	}catch(err){
 		//document.getElementById("result").innerHTML = err.name+ " card: "+card+" "+index+" "+table.length;
@@ -235,19 +236,30 @@ function getPos(){
 *
 **/
 function addCardSpace(position, label, amount){
+	var lab;// = "i"+label;
 	for(i=0;i<amount;i++){
+		  lab = "i"+i+label;
 			var div = document.createElement("DIV");
 			div.setAttribute("class", "td");
-			div.innerHTML = "<div style='clear: both;' class='img'> <img class='cardspace' src='images/backfinal.png'>"+(i+label)+"</div>";
+			//div.setAttribute("id", label);
+			div.innerHTML = "<div style='clear: both;' class='img'> <img class='cardspace' id='"+lab+"' src='images/backfinal.png'>"+(lab)+"</div>";
 
 			if(position=="UP"){
 				document.getElementById("up").appendChild(div);
 			}
-			else if("DOWN"){
+			else if(position=="DOWN"){
 				document.getElementById("down").appendChild(div);
 			}
+			else if(position=="MIDDLE"){
+				document.getElementById("middle").appendChild(div);
+			}
 		}
-		addEndSpace();
+		if(amount>1){
+			addEndSpace("up");
+		}
+		if(position=="MIDDLE"){
+			addEndSpace("middle");
+		}
 
 }
 
@@ -255,10 +267,10 @@ function addCardSpace(position, label, amount){
 * adiciona um espeço no final de uma celula da tabela. Apenas para manter
 * o estilo da tabela com div
 */
-function addEndSpace(){
+function addEndSpace(id){
 	var div = document.createElement("DIV");
 	div.setAttribute("style", "clear: both;");
-	document.getElementById("up").appendChild(div);
+	document.getElementById(id).appendChild(div);
 
 }
 
@@ -444,7 +456,7 @@ function textSize(id,size){
 *  ("MID"). Os espaços ("UP" e "DOWN") não tem um tamanho definido, o que vai depender
 * das cartas quando adcionadas. O espaço "MID" começa com largura e altura definidos.
 */
-	function createTable(){
+	function createTable(type){
 		var center = document.createElement("DIV");
 		center.setAttribute("id", "center");
 		var table =  document.createElement("DIV");
@@ -453,9 +465,17 @@ function textSize(id,size){
 		up.setAttribute("class", "tr");
 	  up.setAttribute("id", "up");
 		table.appendChild(up);
-		var mid =  document.createElement("DIV");
-		mid.setAttribute("id", "mid");
-		table.appendChild(mid);
+		if(type==0){
+			var mid =  document.createElement("DIV");
+			mid.setAttribute("id", "mid");
+			table.appendChild(mid);
+		}
+		else{
+			var middle =  document.createElement("DIV");
+			middle.setAttribute("class", "tr");
+		  middle.setAttribute("id", "middle");
+			table.appendChild(middle);
+		}
 		var down =  document.createElement("DIV");
 		down.setAttribute("class", "tr");
 	  down.setAttribute("id", "down");
@@ -496,12 +516,41 @@ function barSetHeight(id, h){
 
 }
 
+/**
+* Altera a largura de uma regiao da tela
+* id - o id do objeto que será alterado
+* w - nova largura do objeto. Devem ser valores entre 0 e 100.
+*/
+function setWidth(id, w){
+	var newId = idTranslate(id);
+	document.getElementById(newId).style.width = w+"%";
+}
+
 /*
 * retornar o contador de cartas e posição da proxima carta para zero;
 */
 function reset(){
 	cont=0;
 	pos=0;
+}
+
+/**
+*
+*/
+function imageSize(size){
+	    let images = document.getElementsByClassName("img");
+			let src;
+			let id;
+			let className;
+			for(i=0;i<images.length;i++){
+		   className = images[i].childNodes[1].className;
+			 src = images[i].childNodes[1].src;
+			 id = images[i].childNodes[1].id;
+			 images[i].innerHTML = "<img style='width:"+size+"px' class='"+className+"' id='"+id+"' src='"+src+"'>";
+				//alert("te")
+				//document.getElementsByTagName("IMG").style.width = size;
+			}
+      cardSize = size;
 }
 
 /**
