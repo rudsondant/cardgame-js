@@ -46,7 +46,7 @@ Adiciona um espaço para carta na Mesa.
 ```
 function setup(){
 
-createTable();
+createTable(0);
 addCardSpace("UP","0",2); //adiciona no espaço UP da mesa 2 regiões para colocar cartas
 
 
@@ -67,13 +67,13 @@ function setup(){
 ```
 function setup(){
    addBar("upbar"); // cria uma barra com o nome upbar e uma mesa logo abaixo da barra
-   createTable();
+   createTable(0);
 }
 ```
 ```
 function setup(){
    addBar("upbar"); // cria uma barra com o nome upbar e uma mesa logo abaixo da barra, e depois outra barra abaixo da mesa
-   createTable();
+   createTable(0);
    addBar("vir"); 
 }
 ```
@@ -88,7 +88,7 @@ Muda a cor de uma região da sua tela, usando o padrão RGB
 ```
 function setup(){
 
-createTable();
+createTable(0);
 setColor("MID",0,0,255);; //muda a cor do MID para AZUL.
 
 
@@ -152,7 +152,7 @@ Altera a imagem do verso das cartas
 ```
 function setup(){
 
-createTable();
+createTable(0);
 addCardSpace("UP","0",2); //adiciona no espaço UP da mesa 2 regiões para colocar cartas
 setCardBack("RED",2);
 
